@@ -13,7 +13,12 @@ df_main = pd.read_csv(f'https://docs.google.com/spreadsheets/d/{sheet_id}/export
 
 df_main['(salary)_from_in_RUR'] = df_main['(salary)_from_in_RUR'].str.replace(',','.')
 df_main['(salary)_from_in_RUR'] = df_main['(salary)_from_in_RUR'].astype('float64')
-df_main['(salary)_to_in_RUR'] = df_main['(salary)_to_in_RUR'].str.replace(',','.')
+def replace_comma_and_convert(value):
+    try:
+        return float(value.replace(',', '.'))
+    except (ValueError, AttributeError):
+        return value
+df_main['(salary)_to_in_RUR'] = df_main['(salary)_to_in_RUR'].apply(replace_comma_and_convert)
 df_main['(salary)_to_in_RUR'] = df_main['(salary)_to_in_RUR'].astype('float64')
 
 df_main['(address)_lat'] = df_main['(address)_lat'].str.replace(',','.')
