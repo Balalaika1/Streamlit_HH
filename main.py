@@ -10,6 +10,12 @@ from plotly import express as pl
 
 sheet_id = '1--tKdV1vyLsbdHYRL-D4SXFfM-fGvvIs'
 df_main = pd.read_csv(f'https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv')
+
+main_df['(salary)_from_in_RUR'] = main_df['(salary)_from_in_RUR'].str.replace(',','.')
+main_df['(salary)_from_in_RUR'] = main_df['(salary)_from_in_RUR'].astype('float64')
+main_df['(salary)_to_in_RUR'] = main_df['(salary)_to_in_RUR'].str.replace(',','.')
+main_df['(salary)_to_in_RUR'] = main_df['(salary)_to_in_RUR'].astype('float64')
+
 df_main['created_at'] = pd.to_datetime(df_main['created_at'])
 df_main['date_only'] = df_main['created_at'].dt.date
 
