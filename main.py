@@ -116,8 +116,7 @@ st.set_page_config(layout="wide")
 #st.text('3')
 #st.markdown('---')
 with st.sidebar:
-    st.title("h1 HH Statistics")
-    st.markdown('Конфигурации')
+    st.title("HH Statistics")
     request_name = st.multiselect('Выбрать имя запроса',df_main['download_name'].unique())
 
     today = datetime.datetime.now()
@@ -136,8 +135,6 @@ with st.sidebar:
     selected_range = st.slider("Уровень заработной платы", min_value=min_salary_from_in_RUR, max_value=max_salary_from_in_RUR, value=(0, 100000), step=10000, format=None, key=None, help=None,on_change=None, args=None, kwargs=None, disabled=False, label_visibility="visible")
     min_selected = selected_range[0]
     max_selected = selected_range[1]
-    st.write(f"Минимальное значение: {min_selected}")
-    st.write(f"Максимальное значение: {max_selected}")
 
 col1, col2 = st.columns([3, 1])
 
