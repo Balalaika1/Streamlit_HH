@@ -116,7 +116,7 @@ st.set_page_config(layout="wide")
 #st.text('3')
 #st.markdown('---')
 with st.sidebar:
-    st.markdown('##Sidebar')
+    st.title("h1 HH Statistics")
     st.markdown('Конфигурации')
     request_name = st.multiselect('Выбрать имя запроса',df_main['download_name'].unique())
 
